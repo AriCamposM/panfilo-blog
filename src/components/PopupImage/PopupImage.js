@@ -1,10 +1,12 @@
 import React from "react";
 
-function PopupImage ({selectedPost, closeImage  }) {
+import { UserLogStatusContext } from "../../contexts/UserLogStatusContext";
 
-    const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
+function PopupImage ({selectedPost, closePopups  }) {
+
+
     const [newComment, setNewComment] = React.useState('');
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false); // This should be managed by your auth system
+    const isLoggedIn = React.useContext(UserLogStatusContext)
 
 
     const handleCommentSubmit = () => {
@@ -25,7 +27,7 @@ function PopupImage ({selectedPost, closeImage  }) {
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-semibold text-pink-700">{selectedPost.title}</h2>
                         <button
-                            onClick={closeImage}
+                            onClick={closePopups}
                             className="text-gray-500 hover:text-gray-700"
                         >
                             <img className="w-6 h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARlJREFUSEvt1M8qxUEYxvHP2SrZEMpCUlyD/Cls5TZkq9yJzsZKuQG5AmSFbP3JmiVX4PfWqF/6nZlx6mRzZjm98zzv8513pmfEqzdifWODIuF/R3SMM7wPaHUFGzgdFCWX4BAneMFmh8kyrjGHfVx0meQM4mAIhNBr6vQnyRJuMYtHbOHrrwZR32UyUSseAjWXPI+rlOQJU8n4vkm4g8/cKNUYxPmFhGsxiWWxtA1rDYJ1MA/2sR6aVNul7msRhfhNQvScEMXeXbO/WzIpJWh3/oY1TLbGs5gkZ9Al/pEQxegGspkSrpzBQTPnfQSWmPPfr3k1JZnGHi6HeQdHOM98FWGyPuxXUfwpawpKl1yjka0ZGxQRjhzRNxi0NBmpupZSAAAAAElFTkSuQmCC"/>
